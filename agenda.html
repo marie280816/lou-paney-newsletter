@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex" />
+  <title>Ajouter la Soirée Producteurs à mon agenda – Lou Paney</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@700&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --creme: #F2EDE0; --creme-fonce: #E9E2D2; --terracotta: #C8683A; --terracotta-fonce: #A8563A;
+      --sauge: #6B8F68; --sauge-fonce: #5C6E57; --brun: #5C3D22; --charbon: #2A1E14; --bordure: #DCD3BF;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      background: var(--creme-fonce); color: var(--charbon);
+      font-family: 'Montserrat', Arial, Helvetica, sans-serif; font-size: 16px; line-height: 1.55;
+      min-height: 100vh; display: flex; align-items: flex-start; justify-content: center; padding: 24px 16px 48px;
+    }
+    .carte {
+      width: 100%; max-width: 480px; background: var(--creme); border-radius: 16px; overflow: hidden;
+      box-shadow: 0 10px 30px rgba(42, 30, 20, 0.08);
+    }
+    .bande-haut { height: 8px; background: var(--terracotta); }
+    .bande-bas { height: 8px; background: var(--sauge); }
+    .contenu { padding: 32px 28px 28px; text-align: center; }
+    .logo { width: 180px; height: auto; display: block; margin: 0 auto 18px; }
+    .label {
+      margin: 0 0 10px; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--terracotta); font-weight: 600;
+    }
+    h1 { margin: 0 0 6px; font-family: 'Lora', Georgia, serif; font-size: 30px; line-height: 1.15; color: var(--charbon); }
+    .infos { margin: 0 0 26px; color: var(--brun); font-size: 15px; }
+    .infos strong { color: var(--charbon); }
+    .choix { display: flex; flex-direction: column; gap: 10px; text-align: left; }
+    .btn {
+      display: flex; align-items: center; gap: 14px; padding: 14px 18px; border-radius: 12px; text-decoration: none;
+      background: #fff; border: 1px solid var(--bordure); color: var(--charbon); font-weight: 600; font-size: 15px;
+      transition: transform .12s ease, border-color .12s ease, background .12s ease;
+    }
+    .btn:hover, .btn:focus-visible { transform: translateY(-1px); border-color: var(--terracotta); outline: none; }
+    .btn .ico { width: 34px; height: 34px; flex: 0 0 34px; border-radius: 9px; display: grid; place-items: center; font-size: 15px; font-weight: 700; color: #fff; }
+    .btn small { display: block; font-weight: 400; font-size: 12.5px; color: var(--brun); margin-top: 1px; }
+    .btn.principal { background: var(--terracotta); border-color: var(--terracotta); color: var(--creme); }
+    .btn.principal small { color: var(--creme); opacity: .9; }
+    .btn.principal .ico { background: rgba(255,255,255,.18); }
+    .ico-google { background: #4285F4; }
+    .ico-apple { background: #2A1E14; }
+    .ico-outlook { background: #0F6CBD; }
+    .ico-yahoo { background: #6001D2; }
+    .ico-ics { background: var(--sauge); }
+    .aide { margin: 22px 0 0; font-size: 12.5px; color: var(--brun); }
+    .aide a { color: var(--terracotta); }
+    .signature { margin: 28px 0 0; font-size: 11px; letter-spacing: 4px; text-transform: uppercase; color: var(--sauge); font-weight: 600; }
+  </style>
+</head>
+<body>
+  <main class="carte">
+    <div class="bande-haut"></div>
+    <div class="contenu">
+      <img class="logo" src="img/logo-lou-paney.png" alt="Lou Paney" />
+      <p class="label">Samedi 3 octobre · 18h</p>
+      <h1>Soirée Producteurs</h1>
+      <p class="infos"><strong>Chez Lou Paney</strong> · 1104 route du Marais, 47200 Gaujac<br />Choisissez votre agenda pour enregistrer la date :</p>
+
+      <div class="choix" id="choix">
+        <a class="btn" id="btn-google" target="_blank" rel="noopener"
+           href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Soir%C3%A9e%20Producteurs%20%E2%80%93%20Lou%20Paney&dates=20261003T180000%2F20261003T230000&ctz=Europe%2FParis&details=Soir%C3%A9e%20Producteurs%20chez%20Lou%20Paney%20%C3%A0%20Gaujac.%20D%C3%A9gustez%2C%20%C3%A9changez%2C%20partagez%20avec%20Zebull%27in%20(bi%C3%A8res%20artisanales)%2C%20l%27%C3%A9levage%20Frecchiami%20(Blondes%20d%27Aquitaine)%20et%20le%20Ch%C3%A2teau%20Moulin%20de%20Corneil%20(vigneron).%0A%0AAu%20menu%20%3A%20tomates%20%2B%20mozzarella%2C%20pi%C3%A8ce%20de%20boeuf%20et%20accompagnement%2C%20assiette%20de%20salade%20et%20fromage%2C%20dessert.%20Un%20verre%20offert.%0A%0AFormules%20%3A%20adultes%20(%2B12%20ans)%2025%20%E2%82%AC%2C%20enfants%20(-12%20ans)%2010%20%E2%82%AC.%0AR%C3%A9servation%20conseill%C3%A9e%20%3A%2005%2053%2076%2037%2053&location=Lou%20Paney%2C%201104%20route%20du%20Marais%2C%2047200%20Gaujac">
+          <span class="ico ico-google">G</span>
+          <span>Google Agenda<small>Compte Google / Android</small></span>
+        </a>
+
+        <a class="btn" id="btn-apple" href="soiree-producteurs-lou-paney.ics">
+          <span class="ico ico-apple">&#63743;</span>
+          <span>Apple Calendrier<small>iPhone, iPad, Mac</small></span>
+        </a>
+
+        <a class="btn" id="btn-outlook" target="_blank" rel="noopener"
+           href="https://outlook.live.com/calendar/0/deeplink/compose?path=%2Fcalendar%2Faction%2Fcompose&rru=addevent&subject=Soir%C3%A9e%20Producteurs%20%E2%80%93%20Lou%20Paney&startdt=2026-10-03T18%3A00%3A00&enddt=2026-10-03T23%3A00%3A00&location=Lou%20Paney%2C%201104%20route%20du%20Marais%2C%2047200%20Gaujac&body=Soir%C3%A9e%20Producteurs%20chez%20Lou%20Paney%20%C3%A0%20Gaujac.%20D%C3%A9gustez%2C%20%C3%A9changez%2C%20partagez%20avec%20Zebull%27in%2C%20l%27%C3%A9levage%20Frecchiami%20et%20le%20Ch%C3%A2teau%20Moulin%20de%20Corneil.%20Formules%20%3A%20adultes%2025%20%E2%82%AC%2C%20enfants%2010%20%E2%82%AC.%20R%C3%A9servation%20conseill%C3%A9e%20%3A%2005%2053%2076%2037%2053">
+          <span class="ico ico-outlook">O</span>
+          <span>Outlook.com / Hotmail<small>Compte Microsoft personnel</small></span>
+        </a>
+
+        <a class="btn" id="btn-office" target="_blank" rel="noopener"
+           href="https://outlook.office.com/calendar/0/deeplink/compose?path=%2Fcalendar%2Faction%2Fcompose&rru=addevent&subject=Soir%C3%A9e%20Producteurs%20%E2%80%93%20Lou%20Paney&startdt=2026-10-03T18%3A00%3A00&enddt=2026-10-03T23%3A00%3A00&location=Lou%20Paney%2C%201104%20route%20du%20Marais%2C%2047200%20Gaujac&body=Soir%C3%A9e%20Producteurs%20chez%20Lou%20Paney%20%C3%A0%20Gaujac.%20D%C3%A9gustez%2C%20%C3%A9changez%2C%20partagez%20avec%20Zebull%27in%2C%20l%27%C3%A9levage%20Frecchiami%20et%20le%20Ch%C3%A2teau%20Moulin%20de%20Corneil.%20Formules%20%3A%20adultes%2025%20%E2%82%AC%2C%20enfants%2010%20%E2%82%AC.%20R%C3%A9servation%20conseill%C3%A9e%20%3A%2005%2053%2076%2037%2053">
+          <span class="ico ico-outlook">O</span>
+          <span>Outlook professionnel<small>Microsoft 365 / Office</small></span>
+        </a>
+
+        <a class="btn" id="btn-yahoo" target="_blank" rel="noopener"
+           href="https://calendar.yahoo.com/?v=60&title=Soir%C3%A9e%20Producteurs%20%E2%80%93%20Lou%20Paney&st=20261003T160000Z&et=20261003T210000Z&desc=Soir%C3%A9e%20Producteurs%20chez%20Lou%20Paney%20%C3%A0%20Gaujac.%20R%C3%A9servation%20conseill%C3%A9e%20%3A%2005%2053%2076%2037%2053&in_loc=Lou%20Paney%2C%201104%20route%20du%20Marais%2C%2047200%20Gaujac">
+          <span class="ico ico-yahoo">Y</span>
+          <span>Yahoo Agenda</span>
+        </a>
+
+        <a class="btn" id="btn-ics" href="soiree-producteurs-lou-paney.ics" download="soiree-producteurs-lou-paney.ics">
+          <span class="ico ico-ics">&#8595;</span>
+          <span>Autre agenda (fichier .ics)<small>Outlook bureau, Thunderbird, etc.</small></span>
+        </a>
+      </div>
+
+      <p class="aide">Une question ? Appelez-nous au <a href="tel:+33553763753">05 53 76 37 53</a>.</p>
+      <p class="signature">Bon. Local. Évident.</p>
+    </div>
+    <div class="bande-bas"></div>
+  </main>
+
+  <script>
+    // Met en avant l'agenda le plus probable selon l'appareil du visiteur.
+    (function () {
+      var ua = navigator.userAgent || '';
+      var id = /iPhone|iPad|iPod|Macintosh/i.test(ua) ? 'btn-apple'
+             : /Android/i.test(ua) ? 'btn-google'
+             : /Windows/i.test(ua) ? 'btn-outlook'
+             : 'btn-google';
+      var btn = document.getElementById(id);
+      if (!btn) return;
+      btn.classList.add('principal');
+      var s = btn.querySelector('small');
+      if (s) s.textContent = 'Recommandé pour votre appareil';
+      var parent = document.getElementById('choix');
+      parent.insertBefore(btn, parent.firstChild);
+    })();
+  </script>
+</body>
+</html>
